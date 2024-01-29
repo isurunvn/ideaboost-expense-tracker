@@ -1,0 +1,288 @@
+{
+  "version": "6.0",
+  "nxVersion": "16.4.2",
+  "deps": {
+    "@firebase/auth-types": "^0.12.0",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/lab": "^5.0.0-alpha.143",
+    "@mui/material": "^5.14.8",
+    "@mui/types": "^7.2.4",
+    "@mui/x-charts": "^6.18.2",
+    "@nrwl/cli": "^15.9.3",
+    "@swc/helpers": "~0.5.0",
+    "antd": "^5.11.1",
+    "firebase": "^9.23.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.14.1",
+    "tslib": "^2.3.0",
+    "@babel/preset-react": "^7.14.5",
+    "@nx/cypress": "16.4.2",
+    "@nx/eslint-plugin": "16.4.2",
+    "@nx/jest": "16.4.2",
+    "@nx/js": "16.4.2",
+    "@nx/linter": "16.4.2",
+    "@nx/react": "16.4.2",
+    "@nx/webpack": "16.4.2",
+    "@nx/workspace": "16.4.2",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@svgr/webpack": "^8.0.1",
+    "@swc/cli": "~0.1.62",
+    "@swc/core": "~1.3.51",
+    "@testing-library/react": "14.0.0",
+    "@types/jest": "^29.4.0",
+    "@types/material-ui": "^0.21.14",
+    "@types/node": "^18.14.2",
+    "@types/react": "^18.2.13",
+    "@types/react-dom": "^18.2.6",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "babel-jest": "^29.4.1",
+    "cypress": "^12.11.0",
+    "eslint": "~8.15.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
+    "nx-cloud": "latest",
+    "prettier": "^2.6.2",
+    "react-refresh": "^0.10.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "10.9.1",
+    "typescript": "~5.1.3",
+    "url-loader": "^4.1.1"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "projectFileMap": {
+    "expense-tracker-e2e": [
+      {
+        "file": "apps/expense-tracker-e2e/.eslintrc.json",
+        "hash": "14060216369337943343"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/cypress.config.ts",
+        "hash": "15414076024138857470",
+        "deps": [
+          "npm:cypress",
+          "npm:@nx/cypress"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker-e2e/project.json",
+        "hash": "10583564359634280936"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/src/e2e/app.cy.ts",
+        "hash": "11442649488545819241"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/src/fixtures/example.json",
+        "hash": "11614668686582597233"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/src/support/app.po.ts",
+        "hash": "11157016311132186162"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/src/support/commands.ts",
+        "hash": "7314691991044890572"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/src/support/e2e.ts",
+        "hash": "3666078656922506009"
+      },
+      {
+        "file": "apps/expense-tracker-e2e/tsconfig.json",
+        "hash": "1788248097864730386"
+      }
+    ],
+    "expense-tracker": [
+      {
+        "file": "apps/expense-tracker/.babelrc",
+        "hash": "13020124393823981135"
+      },
+      {
+        "file": "apps/expense-tracker/.eslintrc.json",
+        "hash": "11012487992710232822"
+      },
+      {
+        "file": "apps/expense-tracker/jest.config.ts",
+        "hash": "13611383903993293909"
+      },
+      {
+        "file": "apps/expense-tracker/project.json",
+        "hash": "10703645932593351105"
+      },
+      {
+        "file": "apps/expense-tracker/src/app/app.module.css",
+        "hash": "8887387885984320532"
+      },
+      {
+        "file": "apps/expense-tracker/src/app/app.spec.tsx",
+        "hash": "17676612280842131613",
+        "deps": [
+          "npm:@testing-library/react"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/app/app.tsx",
+        "hash": "2865932929325637957",
+        "deps": [
+          "npm:react",
+          "npm:react-router-dom",
+          "npm:firebase"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/app/nx-welcome.tsx",
+        "hash": "3255040509893088830"
+      },
+      {
+        "file": "apps/expense-tracker/src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/expense-tracker/src/components/PieChart.tsx",
+        "hash": "17355918648323138427",
+        "deps": [
+          "npm:react",
+          "npm:@mui/x-charts"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/auth.tsx",
+        "hash": "1927430058108920896",
+        "deps": [
+          "npm:react",
+          "npm:firebase"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/chartOne.tsx",
+        "hash": "17673854383823308673",
+        "deps": [
+          "npm:react",
+          "npm:@mui/x-charts"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/dashboard.tsx",
+        "hash": "673757765864285769",
+        "deps": [
+          "npm:react",
+          "npm:firebase",
+          "npm:antd"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/expenseForm.tsx",
+        "hash": "17277240868800358448",
+        "deps": [
+          "npm:react",
+          "npm:@mui/material"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/expenseList.tsx",
+        "hash": "15990478599071230405",
+        "deps": [
+          "npm:react",
+          "npm:@mui/material"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/layout/RootLayout.tsx",
+        "hash": "9160122301422008726",
+        "deps": [
+          "npm:react",
+          "npm:@mui/material",
+          "npm:firebase"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/navbar.tsx",
+        "hash": "4330065040363268222",
+        "deps": [
+          "npm:react",
+          "npm:@mui/material",
+          "npm:@mui/icons-material",
+          "npm:react-router-dom",
+          "npm:firebase"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/tableCard.tsx",
+        "hash": "14812820118956327890",
+        "deps": [
+          "npm:antd",
+          "npm:react"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/components/updatePopup.tsx",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/expense-tracker/src/config/firebase.tsx",
+        "hash": "681486635177928030",
+        "deps": [
+          "npm:firebase"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/environments/environment.prod.ts",
+        "hash": "10220522844224226756"
+      },
+      {
+        "file": "apps/expense-tracker/src/environments/environment.ts",
+        "hash": "11309522437153898482"
+      },
+      {
+        "file": "apps/expense-tracker/src/favicon.ico",
+        "hash": "9303420814833116677"
+      },
+      {
+        "file": "apps/expense-tracker/src/index.html",
+        "hash": "3658520595801798720"
+      },
+      {
+        "file": "apps/expense-tracker/src/main.tsx",
+        "hash": "4731961929376199421",
+        "deps": [
+          "npm:react",
+          "npm:react-dom"
+        ]
+      },
+      {
+        "file": "apps/expense-tracker/src/styles.css",
+        "hash": "5195668842064076916"
+      },
+      {
+        "file": "apps/expense-tracker/tsconfig.app.json",
+        "hash": "17190776767862500632"
+      },
+      {
+        "file": "apps/expense-tracker/tsconfig.json",
+        "hash": "9850153468027031608"
+      },
+      {
+        "file": "apps/expense-tracker/tsconfig.spec.json",
+        "hash": "6298633881193702183"
+      },
+      {
+        "file": "apps/expense-tracker/webpack.config.js",
+        "hash": "1043731587818967490",
+        "deps": [
+          "npm:@nx/webpack",
+          "npm:@nx/react"
+        ]
+      }
+    ]
+  }
+}

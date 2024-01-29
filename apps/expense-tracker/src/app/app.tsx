@@ -1,101 +1,80 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// App.tsx
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import firebase from 'firebase/auth';
 import { Auth } from '../components/auth';
-import styles from './app.module.css';
-import { db } from '../config/firebase';
-import { useState, useEffect } from 'react';
-import { getDocs, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
-
-
-interface Expense {
-  id: string;
-  Date: string;
-  Description: string; // Add Description property with string type
-  Amount: number; // Add Amount property with number type
-  type: string;
-}
+import { auth } from '../config/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import Dashboard from '../components/dashboard';
+import RootLayout from '../components/layout/RootLayout';
+import AppLayout from '../components/layout/RootLayout';
 
 export function App() {
-  const [expenseList, setExpenseList] = useState<Expense[]>([]);
-
-  const [newExpenseDate, setNewExpenseDate] = useState("");
-  const [newExpenseDescription, setNewExpenseDescription] = useState("");
-  const [newExpenseAmount, setNewExpenseAmount] = useState(0);
-  const [newExpenseType, setNewExpenseType] = useState("");
-
-  const expensesCollectionRef = collection(db, "expenses");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<firebase.User | null>(null);
 
   useEffect(() => {
-    const getExpenseList = async () => {
-      try {
-        const data = await getDocs(expensesCollectionRef);
-        const filteredData: Expense[] = data.docs.map((doc) => ({
-          id: doc.id,
-          Description : doc.data().description,
-          Amount : doc.data().amount,
-          Date : doc.data().date,
-          type : doc.data().type,
-        }));
-        setExpenseList(filteredData);
-      } catch (err) {
-        console.log(err);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, redirect to dashboard or desired route
+        setIsAuthenticated(true);
+        console.log(user);
+        setUser(user);
+        
+      } else {
+        // User is signed out
+        setIsAuthenticated(false);
+        setUser(null);
       }
+    });
+
+    return () => {
+      unsubscribe();
     };
-
-    getExpenseList();
   }, []);
-
-  const submitExpense = async () => {
-    try{
-      await addDoc(expensesCollectionRef, {
-        date: newExpenseDate,
-        description: newExpenseDescription,
-        amount: newExpenseAmount,
-        type: newExpenseType
-      });
-    }catch (err) {
-      console.log(err);   
-    }
-  };
-
-  const deleteExpense = async (id: string)=> {
-    const expenseDoc = doc(db, "expenses", id);
-     await deleteDoc(expenseDoc);
-  };
 
   return (
     <div className='App'>
-      <Auth/>
 
-        <div>
-          <input type="datetime-local" placeholder='Date'
-          onChange={(e) => setNewExpenseDate(e.target.value)} />
-          <input type="text" placeholder='Description'
-          onChange={(e) => setNewExpenseDescription(e.target.value)} />
-          <input type="number" placeholder='Amount'
-          onChange={(e) => setNewExpenseAmount(Number(e.target.value))} />
-          <input type="text" placeholder='Income or Outcome'
-          onChange={(e) => setNewExpenseType(e.target.value)} />
-          <button onClick={submitExpense}>Submit</button>
+    {/* <Router>
+      <div>
+        <Routes>
+        <Route path = '/auth' element={<Auth/>}/>
+        </Routes>
+      {user !== null ? (
+        <Routes>
+        <Route path="/dashboard" element={<Dashboard user ={user} />} />
+        </Routes>
+        ) : (
+          <Navigate to="/login" />
+        )}
         </div>
+    </Router> */}
 
+      {/* <Router>
+        <Routes>
+          <Route path='/' element = {user !== null ?<RootLayout user={user}/>: <div>Loading...</div>}>
+          <Route
+            path='auth/'
+            element={isAuthenticated ? <Navigate to='dashboard/' /> : <Auth />}
+          />
+          {isAuthenticated && user ? ( // Render the Dashboard only when user is authenticated and user is not null
+            <Route path='/dashboard' element={<Dashboard user={user} />} />
+          ) : null}
+          </Route>
+        </Routes>
+      </Router> */}
 
-        <div>
-          {expenseList.map((expense) => (
-            <div key={expense.id}>
-              
-              <h1>{expense.Description}</h1>
-              <h2>{expense.Amount}</h2>
-              <h2>{expense.Date}</h2>
-              <h2>{expense.type}</h2>
-
-              <button onClick={()=> deleteExpense(expense.id)}>
-                Delete
-              </button>
-
-            </div>
-          ))}
-        </div>
-
+    <Router>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+        {isAuthenticated && user ?(
+          <Route path="/dashboard" element={<AppLayout user={user} />} />
+        ) : (
+          <Route path="/*" element={<Navigate to="/dashboard" />} />
+        )}
+      </Routes>
+    </Router>
     </div>
   );
 }

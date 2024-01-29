@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx run expense-tracker:serve --verbose",
+    "startTime": "2024-01-29T07:56:37.674Z",
+    "endTime": "2024-01-29T07:56:38.035Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "expense-tracker:serve:development",
+      "target": "serve",
+      "projectName": "expense-tracker",
+      "hash": "10930155110909087220",
+      "startTime": "2024-01-29T07:56:37.682Z",
+      "endTime": "2024-01-29T07:56:38.034Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}
